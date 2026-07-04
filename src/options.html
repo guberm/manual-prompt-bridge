@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prompt Bridge Options</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="settings-shell">
+      <header>
+        <p class="eyebrow">Settings</p>
+        <h1>Manual Prompt Bridge</h1>
+        <p class="subtitle">Configure local-only prompt generation. No OpenAI API key, no backend, no ChatGPT/Codex cookies.</p>
+      </header>
+
+      <section class="settings-card">
+        <label class="field">
+          <span>Default profile</span>
+          <select id="defaultProfileId"></select>
+        </label>
+
+        <label class="field">
+          <span>Default output</span>
+          <select id="defaultLanguageMode">
+            <option value="both">Russian + English</option>
+            <option value="ru-only">Russian only</option>
+            <option value="en-only">English only</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Default mode</span>
+          <select id="defaultGenerationMode">
+            <option value="direct">Ready prompt — use directly</option>
+            <option value="ai-rewrite-request">Rewrite request — ask ChatGPT/Codex to polish it</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>ChatGPT URL</span>
+          <input id="chatgptUrl" type="url" placeholder="https://chatgpt.com/" />
+        </label>
+
+        <label class="field">
+          <span>Codex URL</span>
+          <input id="codexUrl" type="url" placeholder="https://chatgpt.com/codex" />
+        </label>
+
+        <label class="field">
+          <span>History limit</span>
+          <input id="historyLimit" type="number" min="0" max="200" />
+        </label>
+
+        <label class="checkbox-field">
+          <input id="autoSaveHistory" type="checkbox" />
+          <span>Save generated prompts to local history</span>
+        </label>
+
+        <div class="actions">
+          <button id="save" class="primary" type="button">Save settings</button>
+          <button id="reset" class="ghost" type="button">Reset defaults</button>
+        </div>
+
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+
+      <section class="settings-card safety">
+        <h2>Safety choices</h2>
+        <ul>
+          <li>The extension does not request host permissions.</li>
+          <li>The extension does not request cookie access.</li>
+          <li>The extension does not make network requests to ChatGPT, Codex or OpenAI.</li>
+          <li>Opening ChatGPT only opens a normal browser tab.</li>
+        </ul>
+      </section>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

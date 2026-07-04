@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prompt Bridge Workspace</title>
+    <link rel="stylesheet" href="rewrite.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">PB</div>
+          <div>
+            <h1>Prompt Bridge</h1>
+            <p>Manual ChatGPT/Codex workflow</p>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Prompt profiles">
+          <button class="nav-item active" data-section="compose" type="button">Compose</button>
+          <button class="nav-item" data-section="history" type="button">History</button>
+          <button class="nav-item" data-section="about" type="button">Safety</button>
+        </nav>
+
+        <div class="trust-card">
+          <strong>Zero automation</strong>
+          <span>No API key, no backend, no ChatGPT cookies, no scraping.</span>
+        </div>
+      </aside>
+
+      <section class="content section active" id="composeSection">
+        <header class="content-header">
+          <div>
+            <p class="eyebrow">Local ready prompts</p>
+            <h2>Turn rough text into strong prompts</h2>
+          </div>
+          <div class="header-actions">
+            <button id="openOptions" class="ghost" type="button">Options</button>
+            <button id="openCodex" class="ghost" type="button">Open Codex</button>
+            <button id="openChatGPT" class="primary" type="button">Open ChatGPT</button>
+          </div>
+        </header>
+
+        <div class="composer-grid">
+          <section class="compose-card">
+            <div class="field-grid">
+              <label class="field">
+                <span>Profile</span>
+                <select id="profile"></select>
+              </label>
+              <label class="field">
+                <span>Output</span>
+                <select id="languageMode">
+                  <option value="both">Russian + English</option>
+                  <option value="ru-only">Russian only</option>
+                  <option value="en-only">English only</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Mode</span>
+                <select id="generationMode">
+                  <option value="direct">Ready prompt — use directly</option>
+                  <option value="ai-rewrite-request">Rewrite request — ask ChatGPT/Codex to polish it</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Rough text</span>
+              <textarea id="sourceText" placeholder="Paste your rough idea here, or use the browser context menu on selected text."></textarea>
+            </label>
+
+            <div class="button-row">
+              <button id="generate" class="primary" type="button">Generate variants</button>
+              <button id="clear" class="ghost" type="button">Clear</button>
+            </div>
+
+            <p id="status" class="status" aria-live="polite"></p>
+          </section>
+
+          <section class="tips-card">
+            <h3>How to use it</h3>
+            <ol>
+              <li>Generate ready prompts locally.</li>
+              <li>Copy the best prompt.</li>
+              <li>Open ChatGPT or Codex manually.</li>
+              <li>Paste and send under your own account.</li>
+            </ol>
+            <p>This extension never sends your text to any server.</p>
+          </section>
+        </div>
+
+        <section id="results" class="results-grid" aria-label="Generated prompt variants"></section>
+      </section>
+
+      <section class="content section" id="historySection">
+        <header class="content-header">
+          <div>
+            <p class="eyebrow">Local history</p>
+            <h2>Recent generated prompts</h2>
+          </div>
+          <button id="clearHistory" class="ghost danger" type="button">Clear history</button>
+        </header>
+        <section id="historyList" class="history-list"></section>
+      </section>
+
+      <section class="content section" id="aboutSection">
+        <header class="content-header">
+          <div>
+            <p class="eyebrow">Safety model</p>
+            <h2>What this extension does and does not do</h2>
+          </div>
+        </header>
+        <div class="safety-grid">
+          <article class="safety-card good">
+            <h3>Does</h3>
+            <ul>
+              <li>Generate ready prompts and rewrite requests locally.</li>
+              <li>Copy prompts to clipboard after your click.</li>
+              <li>Open ChatGPT in a normal tab.</li>
+              <li>Store history locally if enabled.</li>
+            </ul>
+          </article>
+          <article class="safety-card bad">
+            <h3>Does not</h3>
+            <ul>
+              <li>Use OpenAI API.</li>
+              <li>Read ChatGPT cookies.</li>
+              <li>Submit messages automatically.</li>
+              <li>Scrape ChatGPT responses.</li>
+              <li>Send your text to a backend.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="rewrite.js"></script>
+  </body>
+</html>

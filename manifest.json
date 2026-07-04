@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Manual Prompt Bridge for ChatGPT and Codex",
+  "description": "Generate ready-to-use Russian and English prompt variants locally, then manually use them in ChatGPT or Codex. No API key, no backend, no cookies.",
+  "version": "1.2.0",
+  "action": {
+    "default_title": "Open Manual Prompt Bridge"
+  },
+  "side_panel": {
+    "default_path": "src/rewrite.html"
+  },
+  "options_page": "src/options.html",
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "contextMenus",
+    "clipboardWrite"
+  ],
+  "commands": {
+    "open-prompt-bridge": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Open Prompt Bridge side panel"
+    }
+  },
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}
